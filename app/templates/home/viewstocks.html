@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% set title = "View Stocks" %}
+{% include 'navigation/head.html' %}
+<body>
+    <div class="wrapper">
+        {% include 'navigation/navbar.html' %}
+        {% include 'navigation/sidebar.html' %}
+        <div class="main_container">
+            <div class="item">
+                <h1>View stocks!</h1>
+                <br>
+                <p>Placeholder.</p>
+                <br>
+                <p>Search for a stock symbol</p>
+                <br>
+                <form action="/tradingaccount" method="POST">
+                    <label for="api_key">Stock Symbol</label>
+                    <input type="text" name="symbol" id="stock_symbol" required>
+                    <br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>            
+        </div>
+    </div>
+    
+</body>
+</html>

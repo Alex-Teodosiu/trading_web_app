@@ -1,24 +1,43 @@
-<!doctype html>
-<title>{% block title %}{% endblock %} - Trading Bot Website</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Trading Bot Website</h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <link rel="stylesheet" href="../static/base.css">
+  <link rel="stylesheet" href="../static/auth/register.html">
+  <!-- <title></title> -->
+</head>
+<body>
+    <div class="wrapper">
+      <div class="top_navbar">
+        
+        <div class="top_menu">
+            <div class="logo">
+              <a href="{{ url_for('landing') }}" class="logo-link">Trading Bot Website</a>
+                
+              </a>
+            </div>
+            <ul>
+              <li><a href="{{ url_for('auth.register') }}" class="button">Register</a></li>
+              <li><a href="{{ url_for('auth.login') }}" class="button">Log In</a></li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="main_container">
+        {% block content %}
+          <!-- Your content goes here -->
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+

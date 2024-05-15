@@ -4,12 +4,146 @@
   <h1>{% block title %}Register{% endblock %}</h1>
 {% endblock %}
 
+
 {% block content %}
-  <form method="post">
+  <!-- <form method="post">
     <label for="email">email</label>
     <input name="email" id="email" required>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
     <input type="submit" value="Register">
-  </form>
+  </form> -->
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .form_wrapper {
+      width: 500px;
+      background: #fff;
+      margin: 0 auto;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title_container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title_container h2 {
+      color: #333;
+      font-size: 24px;
+    }
+
+    .input_field {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input_field span {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: #999;
+    }
+
+    .input_field input {
+      width: 100%;
+      padding: 10px 30px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .input_field select {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .input_field.checkbox_option {
+      display: flex;
+      align-items: center;
+    }
+
+    .input_field.checkbox_option label {
+      margin-left: 10px;
+      color: #666;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Responsive Registration Form</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Password" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Re-type Password" required />
+            </div>
+            <div class="row clearfix">
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="First Name" />
+                </div>
+              </div>
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="Last Name" required />
+                </div>
+              </div>
+            </div>
+                <div class="input_field select_option">
+                  <select>
+                    <option>Select a country</option>
+                    <option>Denmark</option>
+                    <option>USA</option>
+                  </select>
+                  <div class="select_arrow"></div>
+                </div>
+              <div class="input_field checkbox_option">
+                <input type="checkbox" id="cb1">
+            <label for="cb1">I agree with terms and conditions</label>
+              </div>
+              <div class="input_field checkbox_option">
+              </div>
+            <input class="button" type="submit" value="Register" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

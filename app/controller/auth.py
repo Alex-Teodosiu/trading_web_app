@@ -75,7 +75,7 @@ def login():
 
             session.clear()
             session['token'] = response_json['token'][0]['access_token']  
-            return redirect(url_for('index'))
+            return redirect(url_for('home.home_page'))
         else:
             try:
                 response_json = response.json()
@@ -87,28 +87,24 @@ def login():
         return render_template('auth/login.html')
     
 
-    @bp.route('/user/<email>', methods=['GET'])
-    def get_user(email):
-        print(f"Email from URL: {email}")  # print email from URL
-
-        print("Sending request to server...")  # print message before request
-
-        response = requests.get(f'http://127.0.0.1:5000/users/getuser/{email}')
-
-        print("Received response from server.")  # print message after request
-
-        if response.status_code == 200:
-            try:
-                user = response.json()
-            except ValueError:
-                return jsonify({'error': 'Invalid response from API server.'}), 500
-            return jsonify(user)
-        else:
-            try:
-                response_json = response.json()
-            except ValueError:
-                return jsonify({'error': 'Invalid response from API server.'}), 500
-            return jsonify(response_json), response.status_code
+@bp.route('/user/<email>', methods=['GET'])
+def get_user(email):
+    print(f"Email from URL: {email}")  # print email from URL
+    print("Sending request to server...")  # print message before request
+    response = requests.get(f'http://127.0.0.1:5000/users/getuser/{email}')
+    print("Received response from server.")  # print message after request
+    if response.status_code == 200:
+        try:
+            user = response.json()
+        except ValueError:
+            return jsonify({'error': 'Invalid response from API server.'}), 500
+        return jsonify(user)
+    else:
+        try:
+            response_json = response.json()
+        except ValueError:
+            return jsonify({'error': 'Invalid response from API server.'}), 500
+        return jsonify(response_json), response.status_code
 
 # bp.before_app_request() registers a function that runs before the view function, no matter what URL is requested.
 @bp.before_app_request
@@ -126,7 +122,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('landing'))
 
 
 # Require Authentication in Other Views

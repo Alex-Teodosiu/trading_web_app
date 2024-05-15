@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% set title = "Trading Account" %}
+{% include 'navigation/head.html' %}
+<body>
+    <div class="wrapper">
+        {% include 'navigation/navbar.html' %}
+        {% include 'navigation/sidebar.html' %}
+        <div class="main_container">
+            <div class="item">
+                <h1>Connect to your Alpaca trading account!</h1>
+                <br>
+                <p>Connect your Alpaca trading account to start trading with our algorithms.</p>
+                <br>
+                <p>Don't have an account? <a href="https://app.alpaca.markets/signup" target="_blank">Sign up here</a></p>
+                <br>
+                <form action="/tradingaccount" method="POST">
+                    <label for="api_key">API Key</label>
+                    <input type="text" name="api_key" id="api_key" required>
+                    <br>
+                    <label for="secret">Secret</label>
+                    <input type="text" name="secret" id="secret" required>
+                    <br><br>
+                    <button type="submit">Connect</button>
+                </form>
+            </div>            
+        </div>
+    </div>
+    
+</body>
+</html>

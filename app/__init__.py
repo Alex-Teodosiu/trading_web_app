@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template, redirect, session, url_for
 
 
 def create_app(test_config=None):
@@ -23,17 +23,37 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
+    # Make the the session variable globally available to all templates using the context processor
+    @app.context_processor
+    def inject_token():
+        return dict(token=session.get('token'))
+
     @app.route('/')
-    def hello():
-        return 'Hello, World!'
+    def landing():
+        return render_template('landing.html')
     
-    #register blueprint as part of factory function
-    from . import auth
+    @app.route('/home/profile')
+    def profile():
+        return render_template('home/profile.html')
+    
+    #register blueprint as part of the factory function
+    from app.models import auth
     app.register_blueprint(auth.bp)
 
-    from . import blog
-    app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+    from app.models import home 
+    app.register_blueprint(home.bp)
+
+    from app.models import tradingaccount
+    app.register_blueprint(tradingaccount.bp)
+
+    from app.models import market
+    app.register_blueprint(market.bp)
+
+    from app.models import algorithm
+    app.register_blueprint(algorithm.bp)
+
+    from app.models import historicaltrades
+    app.register_blueprint(historicaltrades.bp)
+
 
     return app

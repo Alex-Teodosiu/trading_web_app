@@ -1,0 +1,24 @@
+<div class="top_navbar">
+    <div class="hamburger">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+    <div class="top_menu">
+        <div class="logo">
+            Trading Bot Website
+        </div>
+        <ul>
+            <li><a href="#"><i class="fas fa-bell"></i></a></li>
+            <li><a href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a></li>
+            <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.wrapper').classList.toggle('collapse');
+});
+</script>
